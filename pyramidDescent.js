@@ -21,15 +21,18 @@ module.exports.findRow = (index, size) => {
 //given an index in the pyramid, returns the indicies of it's children in an array
 //returns null if one or more of the children don't exist
 module.exports.findChildren = (index, pyramidSize) => {
+  //finds the number of spaces between the parent and the children
+  debugger;
   const offset = this.findRow(index, pyramidSize);
-  if(!offset) return null;
+  if(offset === null) return null;
   index = index + offset;
   //checking if the potential children are beyond the pyramid's bounds
   if(index + 1 >= pyramidSize || index + 2 >= pyramidSize) return null;
   else return [index + 1, index + 2];
 };
 
-module.exports
+const result = module.exports.findChildren(0, 3);
+console.log(result);
 //const array = [2, 4, 3, 3, 2, 6, 2, 9, 5, 2, 10, 5, 15, 5]
 
 //given an index, return the children indicies
