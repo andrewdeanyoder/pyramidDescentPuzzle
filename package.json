@@ -1,0 +1,14 @@
+{
+  "name": "pyramiddescent",
+  "version": "1.0.0",
+  "description": "A solution to the Pyramid Descent puzzle",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrew Yoder",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^26.6.3"
+  }
+}
