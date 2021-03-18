@@ -18,11 +18,18 @@ module.exports.findRow = (index, size) => {
   return rowCount;
 };
 
-console.log(module.exports.findRow(8,9))
-
-module.exports.findChildren = (index, pyramid) => {
-
+//given an index in the pyramid, returns the indicies of it's children in an array
+//returns null if one or more of the children don't exist
+module.exports.findChildren = (index, pyramidSize) => {
+  const offset = this.findRow(index, pyramidSize);
+  if(!offset) return null;
+  index = index + offset;
+  //checking if the potential children are beyond the pyramid's bounds
+  if(index + 1 >= pyramidSize || index + 2 >= pyramidSize) return null;
+  else return [index + 1, index + 2];
 };
+
+module.exports
 //const array = [2, 4, 3, 3, 2, 6, 2, 9, 5, 2, 10, 5, 15, 5]
 
 //given an index, return the children indicies

@@ -61,7 +61,7 @@ describe('findChildren', () => {
 
   test('returns children correctly in an incomplete pyramid', () => {
     const pyramidSize = 11;
-    expect(findChildren(8, pyramidSize)).toBe(null);
+    expect(findChildren(7, pyramidSize)).toBe(null);
     expect(findChildren(4, pyramidSize)).toEqual([7, 8]);
   });
 
