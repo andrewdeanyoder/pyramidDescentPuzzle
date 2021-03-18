@@ -77,11 +77,12 @@ describe('solvePyramid', () => {
   });
 
   test('returns the correct path for a small pyramid', () => {
+    debugger;
     expect(solvePyramid([1, 2, 3, 4, 1, 1], 2)).toBe('LR');
   });
 
   test('returns the correct path for a medium pyramid', () => {
-    const pyramid = [2, 4, 3, 3, 2, 6, 2, 9, 5, 2, 10, 2, 5, 15, 5];
+    const pyramid = [2, 4, 3, 3, 2, 6, 2, 9, 5, 2, 10, 5, 2, 15, 5];
     const target = 720;
     const path = 'LRLL';
     expect(solvePyramid(pyramid, target)).toBe(path);

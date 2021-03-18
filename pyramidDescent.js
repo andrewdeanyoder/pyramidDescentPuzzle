@@ -1,22 +1,27 @@
 module.exports.solvePyramid = (pyramid, target, currentIndex = 0) => {
 
   const children = this.findChildren(currentIndex, pyramid.length);
+  const newTarget = target / pyramid[currentIndex];
   //base case: there are no more children
   if(children === null) {
-    return '';
+    //indicates the end of a valid path
+    if(newTarget === 1) {
+      return '';
+    }
+    //indicates a failed path
+    return null;
   }
 
   //recursive case
-  const newTarget = target / pyramid[currentIndex];
   //recurse on the left and right children
   const left = this.solvePyramid(pyramid, newTarget, children[0]);
   //if a left child exists
-  if(left) {
+  if(typeof left === 'string') {
     return 'L' + left;
   } else {
     const right = this.solvePyramid(pyramid,newTarget, children[1]);
     //if a right child exists
-    if(right) {
+    if(typeof right === 'string') {
       return 'R' + right;
     }
   }
@@ -41,7 +46,6 @@ module.exports.findRow = (index, size) => {
 //returns null if one or more of the children don't exist
 module.exports.findChildren = (index, pyramidSize) => {
   //finds the number of spaces between the parent and the children
-  debugger;
   const offset = this.findRow(index, pyramidSize);
   if(offset === null) return null;
   index = index + offset;
@@ -49,10 +53,6 @@ module.exports.findChildren = (index, pyramidSize) => {
   if(index + 1 >= pyramidSize || index + 2 >= pyramidSize) return null;
   else return [index + 1, index + 2];
 };
-
-const result = module.exports.findChildren(0, 3);
-console.log(result);
-//const array = [2, 4, 3, 3, 2, 6, 2, 9, 5, 2, 10, 5, 15, 5]
 
 //given an index, return the children indicies
   //find the row
