@@ -4,8 +4,18 @@ module.exports.solvePyramid = (pyramid) => {
   return path;
 }
 
-module.exports.findRow = (index, pyramid) => {
+//given an index in the pyramid, returns the row of that entry
+module.exports.findRow = (index, size) => {
+  if(index > size) return null;
+  if (index === 0) return 0;
 
+  let rowCount = 0;
+  while (index > 0) {
+    rowCount++;
+    index - rowCount - 1;
+  }
+
+  return rowCount + 1;
 };
 
 module.exports.findChildren = (index, pyramid) => {
@@ -22,11 +32,15 @@ module.exports.findChildren = (index, pyramid) => {
 1 -> 3, 4
 3 -> 6, 7
 
-given an index, which row is it on?
 
 Find the row: loop, subtract increasing integers, until you hit a negative number
-8-1 = 7
-7-2 = 5
-5 - 3 = 2
-2 - 4 = -1
+8 - 0 - 1 = 7
+7- 1 - 1 = 5
+5 - 2 - 1 = 2
+2 - 3 - 1 = -1
+
+5-0 - 1 = 4
+4-1 - 1 = 2
+2- 2- 1 = -1
+
 */
