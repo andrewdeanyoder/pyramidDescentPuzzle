@@ -6,17 +6,19 @@ module.exports.solvePyramid = (pyramid) => {
 
 //given an index in the pyramid, returns the row of that entry
 module.exports.findRow = (index, size) => {
-  if(index > size) return null;
+  if (index > size) return null;
   if (index === 0) return 0;
 
   let rowCount = 0;
   while (index > 0) {
     rowCount++;
-    index - rowCount - 1;
+    index = index - rowCount - 1;
   }
 
-  return rowCount + 1;
+  return rowCount;
 };
+
+console.log(module.exports.findRow(8,9))
 
 module.exports.findChildren = (index, pyramid) => {
 
