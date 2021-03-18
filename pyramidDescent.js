@@ -1,9 +1,16 @@
-module.exports = (pyramid) => {
+module.exports.solvePyramid = (pyramid) => {
   const path = '';
 
   return path;
 }
 
+module.exports.findRow = (index, pyramid) => {
+
+};
+
+module.exports.findChildren = (index, pyramid) => {
+
+};
 //const array = [2, 4, 3, 3, 2, 6, 2, 9, 5, 2, 10, 5, 15, 5]
 
 //given an index, return the children indicies
