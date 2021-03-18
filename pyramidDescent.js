@@ -1,7 +1,26 @@
-module.exports.solvePyramid = (pyramid) => {
-  const path = '';
+module.exports.solvePyramid = (pyramid, target, currentIndex = 0) => {
 
-  return path;
+  const children = this.findChildren(currentIndex, pyramid.length);
+  //base case: there are no more children
+  if(children === null) {
+    return '';
+  }
+
+  //recursive case
+  const newTarget = target / pyramid[currentIndex];
+  //recurse on the left and right children
+  const left = this.solvePyramid(pyramid, newTarget, children[0]);
+  //if a left child exists
+  if(left) {
+    return 'L' + left;
+  } else {
+    const right = this.solvePyramid(pyramid,newTarget, children[1]);
+    //if a right child exists
+    if(right) {
+      return 'R' + right;
+    }
+  }
+  return null;
 }
 
 //given an index in the pyramid, returns the row of that entry

@@ -69,7 +69,7 @@ describe('findChildren', () => {
 
 describe('solvePyramid', () => {
   test('returns a string', () => {
-    expect(typeof solvePyramid([1])).toBe('string');
+    expect(typeof solvePyramid([1], 1)).toBe('string');
   });
 
   test('returns an empty string for a single-row pyramid', () => {
@@ -81,7 +81,7 @@ describe('solvePyramid', () => {
   });
 
   test('returns the correct path for a medium pyramid', () => {
-    const pyramid = [2, 4, 3, 3, 2, 6, 2, 9, 5, 2, 10, 5, 15, 5];
+    const pyramid = [2, 4, 3, 3, 2, 6, 2, 9, 5, 2, 10, 2, 5, 15, 5];
     const target = 720;
     const path = 'LRLL';
     expect(solvePyramid(pyramid, target)).toBe(path);
