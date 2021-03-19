@@ -1,6 +1,6 @@
-module.exports.solvePyramid = (pyramid, target, currentIndex = 0) => {
+const solvePyramid = (pyramid, target, currentIndex = 0) => {
 
-  const children = this.findChildren(currentIndex, pyramid.length);
+  const children = findChildren(currentIndex, pyramid.length);
   const newTarget = target / pyramid[currentIndex];
   //base case: there are no more children
   if(children === null) {
@@ -14,13 +14,13 @@ module.exports.solvePyramid = (pyramid, target, currentIndex = 0) => {
 
   //recursive case
   //recurse on the left and right children
-  const left = this.solvePyramid(pyramid, newTarget, children[0]);
-  //if a left child exists
+  const left = solvePyramid(pyramid, newTarget, children[0]);
+  //if a valid left path exists
   if(typeof left === 'string') {
     return 'L' + left;
   } else {
-    const right = this.solvePyramid(pyramid,newTarget, children[1]);
-    //if a right child exists
+    const right = solvePyramid(pyramid, newTarget, children[1]);
+    //if a valid right path exists
     if(typeof right === 'string') {
       return 'R' + right;
     }
@@ -28,32 +28,38 @@ module.exports.solvePyramid = (pyramid, target, currentIndex = 0) => {
   return null;
 }
 
-//given an index in the pyramid, returns the row of that entry
-module.exports.findRow = (index, size) => {
+//given an index in the pyramid and the size of the pyramid
+//returns the row index of that entry
+const findRow = (index, size) => {
   if (index > size) return null;
-  if (index === 0) return 0;
 
-  let rowCount = 0;
+  let row = 0;
   while (index > 0) {
-    rowCount++;
-    index = index - rowCount - 1;
+    row++;
+    index = index - row - 1;
   }
 
-  return rowCount;
+  return row;
 };
 
 //given an index in the pyramid, returns the indicies of it's children in an array
 //returns null if one or more of the children don't exist
-module.exports.findChildren = (index, pyramidSize) => {
+const findChildren = (index, pyramidSize) => {
   //finds the number of spaces between the parent and the children
-  const offset = this.findRow(index, pyramidSize);
+  const offset = findRow(index, pyramidSize);
+  //indicates that children don't exist
   if(offset === null) return null;
   index = index + offset;
-  //checking if the potential children are beyond the pyramid's bounds
+  //check if the potential children are beyond the pyramid's bounds
   if(index + 1 >= pyramidSize || index + 2 >= pyramidSize) return null;
   else return [index + 1, index + 2];
 };
 
+module.exports = {
+  solvePyramid,
+  findRow,
+  findChildren,
+};
 //given an index, return the children indicies
   //find the row
     //loop, subtracting increasing integers from index, until index is negative
