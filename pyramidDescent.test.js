@@ -9,6 +9,10 @@ describe('findRow', () => {
     expect(findRow(5, 3)).toBe(null);
   });
 
+  test('returns zero when index is zero', () => {
+    expect(findRow(0, 3)).toBe(0);
+  });
+
   test('returns the row in a small pyramid', () => {
     const pyramid = [0, 1, 2, 3, 4, 5]
     expect(findRow(0, pyramid.length)).toBe(0);
@@ -105,3 +109,12 @@ describe('solvePyramid', () => {
   });
 
 });
+
+/*further edge cases:
+  pyramids with incomplete rows or missing blocks (must change findChildren to return partial children)
+  when the goal is negative or a decimal : NOT NECESSARY
+  when the goal is zero
+  a truely large pyramid with one possible path (how to construct it?)
+  a truely large pyramid with multiple possible paths (how to construct it?)
+  a truely large pyramid with one possible path (how to construct it?)
+*/
